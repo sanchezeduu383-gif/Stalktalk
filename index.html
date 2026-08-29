@@ -111,6 +111,13 @@
   }
   .ia-modal input:focus{outline:none;border-color:var(--orange);}
   .ia-modal .ia-btn-primary{width:100%;padding:12px;font-size:14.5px;}
+  .ia-btn-whatsapp{
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    width:100%;background:#25d366;color:#0b1a10;font-weight:700;
+    border:none;border-radius:8px;padding:12px;font-size:14px;font-family:'Inter',sans-serif;
+    cursor:pointer;
+  }
+  .ia-btn-whatsapp:active{transform:scale(0.97);}
   .ia-paywall-price{
     background:var(--bg);border:1px dashed var(--line);border-radius:10px;
     padding:12px;margin-bottom:14px;
@@ -338,7 +345,8 @@
   const PAY_INSTRUCTIONS = {
     price: 'KSh 1,500 one-time',          // EDIT ME — your real price
     mpesa: '0741 173 116',                 // M-Pesa — send money to this number
-    phone: '0741 173 116'                  // Same number, also used for WhatsApp
+    phone: '0741 173 116',                 // Same number, also used for WhatsApp
+    whatsappIntl: '254741173116'           // Same number in international format, no + or leading 0 — needed for the WhatsApp link
   };
 
   let license = { shopName: '', unlocked: false, code: '' };
@@ -412,6 +420,10 @@
   // ---- Paywall modal (trial exhausted) ----
   function showPaywall(){
     const slot = document.getElementById('ia-modal-slot');
+    const waText = encodeURIComponent(
+      `Hi, I'd like to unlock StockTalk for "${license.shopName || 'my shop'}". I've paid ${PAY_INSTRUCTIONS.price} via M-Pesa — here's my receipt.`
+    );
+    const waLink = `https://wa.me/${PAY_INSTRUCTIONS.whatsappIntl}?text=${waText}`;
     slot.innerHTML = `
       <div class="ia-overlay">
         <div class="ia-modal">
@@ -420,9 +432,9 @@
           <div class="ia-paywall-price">
             <div class="row"><span>Price</span><b>${PAY_INSTRUCTIONS.price}</b></div>
             <div class="row"><span>M-Pesa (Send Money)</span><b>${PAY_INSTRUCTIONS.mpesa}</b></div>
-            <div class="row"><span>WhatsApp receipt to</span><b>${PAY_INSTRUCTIONS.phone}</b></div>
           </div>
-          <p style="margin-top:-6px;">${SELLER_NAME} will send you an unlock code after payment. Enter it below.</p>
+          <a href="${waLink}" target="_blank" rel="noopener" class="ia-btn ia-btn-whatsapp" style="text-decoration:none;">💬 Send receipt on WhatsApp</a>
+          <p style="margin-top:10px;">${SELLER_NAME} will reply with your unlock code. Enter it below once you have it.</p>
           <input id="pw-code" placeholder="XXXX-XXXX" style="text-transform:uppercase;">
           <div class="ia-modal-error" id="pw-error">That code doesn't match this business name.</div>
           <button class="ia-btn ia-btn-primary" id="pw-unlock">Unlock StockTalk</button>
