@@ -1,0 +1,888 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#14181d">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="StockTalk">
+<title>StockTalk — Say it. Stock it.</title>
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="icon" type="image/png" href="data:image/png;base64,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">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+<style>
+  html,body{height:100%;}
+  :root{
+    --bg:#14181d;
+    --bg-panel:#1b2129;
+    --bg-elevated:#232a33;
+    --line:#2e3640;
+    --paper:#f5f1e6;
+    --paper-line:#d8cfb8;
+    --ink:#2a2620;
+    --text:#ece9e2;
+    --text-dim:#98a1ab;
+    --orange:#e8590c;
+    --orange-dim:#7a3413;
+    --steel:#5b8cb4;
+    --ok:#3fa34d;
+    --warn:#e03131;
+    --radius:10px;
+    font-family:'Inter',sans-serif;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;}
+  #ia-root{
+    background:var(--bg);
+    color:var(--text);
+    min-height:100%;
+    padding:0 0 40px 0;
+    -webkit-font-smoothing:antialiased;
+  }
+  .ia-wrap{max-width:960px;margin:0 auto;padding:18px 14px 0;}
+
+  /* ---- Header ---- */
+  .ia-header{
+    display:flex;align-items:baseline;justify-content:space-between;
+    gap:10px;margin-bottom:14px;flex-wrap:wrap;
+  }
+  .ia-title{
+    font-family:'Barlow Condensed',sans-serif;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+    font-size:clamp(22px,5vw,30px);
+    margin:0;
+    display:flex;align-items:center;gap:10px;
+  }
+  .ia-title .tag{
+    background:var(--orange);color:#fff;
+    font-family:'IBM Plex Mono',monospace;
+    font-size:11px;font-weight:600;
+    padding:3px 7px;border-radius:5px;
+    letter-spacing:0.02em;
+  }
+  .ia-sub{color:var(--text-dim);font-size:12.5px;margin-top:2px;}
+  .ia-install-btn{
+    background:var(--steel);color:#fff;border:none;border-radius:7px;
+    font-size:11.5px;font-weight:600;padding:7px 11px;cursor:pointer;
+    display:flex;align-items:center;gap:4px;white-space:nowrap;font-family:'Inter',sans-serif;
+  }
+  .ia-install-btn:active{transform:scale(0.96);}
+  .ia-brandbar{
+    font-size:10.5px;color:var(--text-dim);letter-spacing:.02em;
+    margin-bottom:6px;
+  }
+  .ia-brandbar b{color:var(--orange);font-weight:700;}
+
+  /* ---- Trial pill ---- */
+  .ia-trial-pill{
+    display:inline-flex;align-items:center;gap:6px;
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:999px;
+    padding:4px 10px;font-size:10.5px;color:var(--text-dim);margin-bottom:10px;
+  }
+  .ia-trial-pill b{color:var(--text);}
+  .ia-trial-pill.warn{border-color:var(--warn);color:var(--warn);}
+  .ia-trial-pill.licensed{border-color:var(--ok);color:var(--ok);}
+
+  /* ---- Modal overlay (onboarding + paywall) ---- */
+  .ia-overlay{
+    position:fixed;inset:0;background:rgba(10,12,15,.72);
+    display:flex;align-items:center;justify-content:center;padding:18px;z-index:100;
+  }
+  .ia-modal{
+    background:var(--bg-elevated);border:1px solid var(--line);border-radius:14px;
+    padding:22px 18px;max-width:380px;width:100%;
+  }
+  .ia-modal h2{
+    font-family:'Barlow Condensed',sans-serif;font-weight:800;text-transform:uppercase;
+    letter-spacing:.02em;font-size:20px;margin:0 0 6px;color:var(--text);
+  }
+  .ia-modal p{font-size:12.5px;color:var(--text-dim);line-height:1.5;margin:0 0 14px;}
+  .ia-modal input{
+    width:100%;background:var(--bg);border:1px solid var(--line);border-radius:8px;
+    color:var(--text);padding:11px 12px;font-size:14px;margin-bottom:10px;font-family:'Inter',sans-serif;
+  }
+  .ia-modal input:focus{outline:none;border-color:var(--orange);}
+  .ia-modal .ia-btn-primary{width:100%;padding:12px;font-size:14.5px;}
+  .ia-paywall-price{
+    background:var(--bg);border:1px dashed var(--line);border-radius:10px;
+    padding:12px;margin-bottom:14px;
+  }
+  .ia-paywall-price .row{display:flex;justify-content:space-between;font-size:12.5px;padding:3px 0;color:var(--text-dim);}
+  .ia-paywall-price .row b{color:var(--text);font-family:'IBM Plex Mono',monospace;}
+  .ia-modal-error{color:var(--warn);font-size:11.5px;margin:-4px 0 10px;display:none;}
+  .ia-modal-error.show{display:block;}
+
+  /* ---- Stat strip ---- */
+  .ia-stats{
+    display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-bottom:16px;
+  }
+  .ia-stat{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:9px 8px;text-align:center;
+  }
+  .ia-stat b{
+    display:block;font-family:'IBM Plex Mono',monospace;font-size:clamp(14px,3.6vw,18px);
+    font-weight:600;color:var(--text);
+  }
+  .ia-stat span{font-size:10px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.04em;}
+  .ia-stat.low b{color:var(--warn);}
+
+  /* ---- Talk-to-it input dock ---- */
+  .ia-dock{
+    background:var(--bg-elevated);border:1px solid var(--line);border-radius:var(--radius);
+    padding:12px;margin-bottom:14px;
+  }
+  .ia-dock-label{
+    font-size:11px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;
+    margin-bottom:7px;font-weight:600;
+  }
+  .ia-input-row{display:flex;gap:8px;align-items:flex-end;}
+  .ia-input-row textarea{
+    flex:1;resize:none;min-height:44px;max-height:120px;
+    background:var(--bg);border:1px solid var(--line);border-radius:8px;
+    color:var(--text);font-family:'Inter',sans-serif;font-size:14.5px;
+    padding:10px 12px;line-height:1.4;
+  }
+  .ia-input-row textarea:focus{outline:none;border-color:var(--orange);}
+  .ia-btn{
+    border:none;border-radius:8px;cursor:pointer;font-family:'Inter',sans-serif;
+    font-weight:600;font-size:14px;padding:11px 14px;flex-shrink:0;
+    display:flex;align-items:center;justify-content:center;gap:6px;
+    transition:transform .08s ease, opacity .15s ease;
+  }
+  .ia-btn:active{transform:scale(0.96);}
+  .ia-btn-primary{background:var(--orange);color:#fff;}
+  .ia-btn-mic{background:var(--bg);border:1px solid var(--line);color:var(--text);width:44px;padding:0;height:44px;}
+  .ia-btn-mic.listening{background:var(--warn);color:#fff;border-color:var(--warn);animation:pulse 1.1s infinite;}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,49,49,.5);}70%{box-shadow:0 0 0 9px rgba(224,49,49,0);}100%{box-shadow:0 0 0 0 rgba(224,49,49,0);}}
+  .ia-hint{font-size:11.5px;color:var(--text-dim);margin-top:8px;}
+  .ia-hint b{color:var(--text);font-weight:600;}
+
+  /* ---- Parsed ticket preview ---- */
+  .ia-ticket{
+    background:var(--paper);color:var(--ink);border-radius:8px;
+    padding:14px 14px 12px;margin-top:12px;
+    font-family:'IBM Plex Mono',monospace;
+    position:relative;
+    border:1px dashed var(--paper-line);
+  }
+  .ia-ticket-head{
+    display:flex;justify-content:space-between;align-items:center;
+    border-bottom:1px dashed var(--paper-line);padding-bottom:8px;margin-bottom:10px;
+  }
+  .ia-ticket-head span{font-size:11px;text-transform:uppercase;letter-spacing:0.08em;color:#8a8270;}
+  .ia-ticket-head b{font-family:'Barlow Condensed',sans-serif;font-size:16px;text-transform:uppercase;letter-spacing:.03em;}
+  .ia-field{display:grid;grid-template-columns:112px 1fr;gap:6px;align-items:center;padding:4px 0;font-size:13px;}
+  .ia-field label{color:#7a7362;font-size:11.5px;}
+  .ia-field input, .ia-field select{
+    font-family:'IBM Plex Mono',monospace;font-size:13px;background:#fff;
+    border:1px solid var(--paper-line);border-radius:5px;padding:5px 7px;color:var(--ink);width:100%;
+  }
+  .ia-field .flag{color:var(--orange-dim);font-size:10.5px;margin-left:4px;}
+  .ia-ticket-actions{display:flex;gap:8px;margin-top:12px;}
+  .ia-ticket-actions .ia-btn-primary{flex:1;}
+  .ia-btn-ghost{background:transparent;border:1px solid var(--paper-line);color:var(--ink);}
+
+  /* ---- Activity feed ---- */
+  .ia-feed{margin:4px 0 16px;}
+  .ia-feed-item{
+    display:flex;align-items:center;gap:8px;font-size:12.5px;color:var(--text-dim);
+    padding:4px 2px;
+  }
+  .ia-feed-item b{color:var(--text);font-weight:600;}
+  .ia-feed-item .dot{width:5px;height:5px;border-radius:50%;background:var(--ok);flex-shrink:0;}
+
+  /* ---- Filters ---- */
+  .ia-filters{display:flex;gap:6px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;-webkit-overflow-scrolling:touch;}
+  .ia-chip{
+    flex-shrink:0;background:var(--bg-panel);border:1px solid var(--line);color:var(--text-dim);
+    font-size:12px;padding:6px 11px;border-radius:999px;cursor:pointer;white-space:nowrap;font-weight:500;
+  }
+  .ia-chip.active{background:var(--steel);border-color:var(--steel);color:#fff;}
+  .ia-chip.low.active{background:var(--warn);border-color:var(--warn);}
+  .ia-search{
+    width:100%;background:var(--bg-panel);border:1px solid var(--line);border-radius:8px;
+    color:var(--text);padding:9px 11px;font-size:13.5px;margin-bottom:10px;
+  }
+
+  /* ---- Inventory cards (mobile) ---- */
+  .ia-card{
+    background:var(--bg-panel);border:1px solid var(--line);border-radius:var(--radius);
+    padding:12px;margin-bottom:8px;
+  }
+  .ia-card-top{display:flex;justify-content:space-between;gap:8px;align-items:flex-start;}
+  .ia-card-name{font-weight:600;font-size:14.5px;line-height:1.3;}
+  .ia-card-meta{font-size:11.5px;color:var(--text-dim);margin-top:2px;}
+  .ia-badge{
+    font-size:10.5px;font-weight:700;padding:3px 8px;border-radius:999px;white-space:nowrap;
+    text-transform:uppercase;letter-spacing:.02em;
+  }
+  .ia-badge.ok{background:rgba(63,163,77,.15);color:var(--ok);}
+  .ia-badge.low{background:rgba(224,49,49,.15);color:var(--warn);}
+  .ia-card-grid{
+    display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:10px;
+    font-family:'IBM Plex Mono',monospace;
+  }
+  .ia-card-grid div{background:var(--bg);border-radius:6px;padding:6px 7px;}
+  .ia-card-grid .k{font-size:9.5px;color:var(--text-dim);text-transform:uppercase;display:block;}
+  .ia-card-grid .v{font-size:12.5px;font-weight:600;margin-top:1px;}
+  .ia-card-actions{display:flex;gap:8px;margin-top:10px;}
+  .ia-mini{
+    background:transparent;border:1px solid var(--line);color:var(--text-dim);
+    font-size:11.5px;padding:6px 10px;border-radius:6px;cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .ia-mini:hover{border-color:var(--steel);color:var(--text);}
+  .ia-mini.danger:hover{border-color:var(--warn);color:var(--warn);}
+
+  .ia-empty{
+    text-align:center;color:var(--text-dim);font-size:13px;padding:30px 10px;
+    border:1px dashed var(--line);border-radius:var(--radius);
+  }
+
+  /* ---- Footer actions ---- */
+  .ia-footer{display:flex;gap:8px;margin-top:16px;flex-wrap:wrap;}
+  .ia-footer .ia-mini{padding:9px 13px;font-size:12.5px;}
+  .ia-credit{text-align:center;color:var(--text-dim);font-size:10px;margin-top:18px;opacity:.7;}
+
+  .ia-toast{
+    position:fixed;bottom:18px;left:50%;transform:translateX(-50%);
+    background:var(--ok);color:#fff;padding:9px 16px;border-radius:8px;font-size:13px;font-weight:600;
+    box-shadow:0 6px 20px rgba(0,0,0,.35);opacity:0;pointer-events:none;transition:opacity .25s ease, transform .25s ease;
+    z-index:50;
+  }
+  .ia-toast.show{opacity:1;transform:translateX(-50%) translateY(-4px);}
+
+  @media (min-width:640px){
+    .ia-field{grid-template-columns:130px 1fr 130px 1fr;}
+    .ia-field.full{grid-template-columns:130px 1fr;}
+  }
+</style>
+
+<body>
+<div id="ia-root">
+  <div class="ia-wrap">
+    <div class="ia-brandbar">Powered by <b>Judit Modern Shop</b></div>
+    <div id="ia-trial-pill-slot"></div>
+    <div class="ia-header">
+      <h1 class="ia-title">StockTalk <span class="tag">LIVE</span></h1>
+      <button class="ia-install-btn" id="ia-install" style="display:none;">⤓ Install app</button>
+    </div>
+    <div class="ia-sub" style="margin-bottom:14px;">Say it. Stock it. — tell it what came in, it fills in the rest.</div>
+
+    <div class="ia-stats" id="ia-stats"></div>
+
+    <div class="ia-dock">
+      <div class="ia-dock-label">Speak or type a new item</div>
+      <div class="ia-input-row">
+        <textarea id="ia-input" rows="1" placeholder="e.g. Angle grinder Bosch 9 inch, buying 4500, qty 12, shelf A1"></textarea>
+        <button class="ia-btn ia-btn-mic" id="ia-mic" title="Speak instead of typing">🎤</button>
+        <button class="ia-btn ia-btn-primary" id="ia-parse">Add</button>
+      </div>
+      <div class="ia-hint">Just give a <b>name</b> and <b>buying price</b> — StockTalk fills in category, location tag, low-stock line and a suggested selling price. Mention "selling", "qty", "shelf/rack/floor" or "threshold" to set those yourself.</div>
+      <div id="ia-ticket-slot"></div>
+    </div>
+
+    <div id="ia-feed" class="ia-feed"></div>
+
+    <input class="ia-search" id="ia-search" placeholder="Search items…">
+    <div class="ia-filters" id="ia-filters"></div>
+
+    <div id="ia-list"></div>
+
+    <div class="ia-footer">
+      <button class="ia-mini" id="ia-export">⬇ Download as Excel</button>
+      <button class="ia-mini danger" id="ia-reset">Reset all data</button>
+    </div>
+    <div class="ia-credit">StockTalk™ — a Judit Modern Shop product</div>
+  </div>
+  <div class="ia-toast" id="ia-toast"></div>
+  <div id="ia-modal-slot"></div>
+</div>
+
+<script>
+(function(){
+  const root = document.getElementById('ia-root');
+  const STORE_KEY = 'stocktalk-items';
+  let items = [];
+  let filterCategory = 'All';
+  let filterLow = false;
+  let searchTerm = '';
+  let pendingParse = null;
+
+  const CATEGORY_KEYWORDS = {
+    'Power Tools': ['grinder','drill','saw','sander','router','impact driver','jigsaw','planer','bosch','makita','dewalt','hilti','total tools'],
+    'Machines': ['welding','welder','compressor','generator','machine','lathe'],
+    'Hand Tools': ['spanner','wrench','hammer','screwdriver','plier','tape measure','measuring tape','level','chisel','file','hacksaw'],
+    'Spares/Consumables': ['disc','blade','bolt','nut','screw','nail','bit','electrode','sandpaper','abrasive','box of'],
+    'Safety Gear': ['helmet','glove','goggle','vest','boot','mask','ear muff','harness'],
+    'Electricals': ['cable','wire','switch','socket','bulb','breaker','extension'],
+    'Plumbing': ['pipe','valve','fitting','tap ','faucet','elbow'],
+    'Paint': ['paint','brush','roller','thinner','primer']
+  };
+
+  const CATEGORY_LIST = Object.keys(CATEGORY_KEYWORDS).concat(['General']);
+
+  // ---------- Licensing (free trial + unlock code) ----------
+  const LICENSE_KEY = 'stocktalk-license';
+  const TRIAL_LIMIT = 15;                 // free items before paywall — edit to change trial length
+  const LICENSE_SECRET = 'JMS-STOCKTALK-2026'; // must match the private Key Generator tool exactly
+  const SELLER_NAME = 'Judit Modern Shop';
+  const PAY_INSTRUCTIONS = {
+    price: 'KSh 1,500 one-time',          // EDIT ME — your real price
+    mpesa: '0741 173 116',                 // M-Pesa — send money to this number
+    phone: '0741 173 116'                  // Same number, also used for WhatsApp
+  };
+
+  let license = { shopName: '', unlocked: false, code: '' };
+
+  function licenseCode(shopName, secret){
+    const s = (shopName.trim().toUpperCase() + '|' + secret);
+    let h1 = 0, h2 = 0;
+    for(let i=0;i<s.length;i++){
+      const c = s.charCodeAt(i);
+      h1 = (h1*31 + c) >>> 0;
+      h2 = (h2*131 + c*7) >>> 0;
+    }
+    const combined = (h1 ^ h2) >>> 0;
+    const code = combined.toString(36).toUpperCase().padStart(8,'0').slice(0,8);
+    return code.slice(0,4) + '-' + code.slice(4,8);
+  }
+
+  async function loadLicense(){
+    try{
+      const res = await window.storage.get(LICENSE_KEY, false);
+      if(res && res.value){
+        const parsed = JSON.parse(res.value);
+        if(parsed && typeof parsed === 'object') license = parsed;
+      }
+    }catch(e){ /* first run */ }
+  }
+  async function saveLicense(){
+    try{ await window.storage.set(LICENSE_KEY, JSON.stringify(license), false); }
+    catch(e){ console.error('license save failed', e); }
+  }
+
+  function renderTrialPill(){
+    const slot = document.getElementById('ia-trial-pill-slot');
+    if(!slot) return;
+    if(license.unlocked){
+      slot.innerHTML = `<div class="ia-trial-pill licensed">✓ Licensed to <b>${escapeAttr(license.shopName)}</b></div>`;
+      return;
+    }
+    const used = items.length;
+    const over = used >= TRIAL_LIMIT;
+    slot.innerHTML = `<div class="ia-trial-pill ${over?'warn':''}">Free trial — <b>${used}/${TRIAL_LIMIT}</b> items used</div>`;
+  }
+
+  function trialBlocked(){
+    return !license.unlocked && items.length >= TRIAL_LIMIT;
+  }
+
+  // ---- Onboarding modal (first run: capture shop name) ----
+  function showOnboarding(){
+    const slot = document.getElementById('ia-modal-slot');
+    slot.innerHTML = `
+      <div class="ia-overlay">
+        <div class="ia-modal">
+          <h2>Welcome to StockTalk</h2>
+          <p>What's your business name? This is used only to generate your unlock code later — it stays on this device.</p>
+          <input id="ob-name" placeholder="e.g. ABC Hardware" autofocus>
+          <div class="ia-modal-error" id="ob-error">Please enter a business name.</div>
+          <button class="ia-btn ia-btn-primary" id="ob-continue">Start free trial — ${TRIAL_LIMIT} items</button>
+        </div>
+      </div>`;
+    document.getElementById('ob-continue').onclick = async ()=>{
+      const name = document.getElementById('ob-name').value.trim();
+      if(!name){ document.getElementById('ob-error').classList.add('show'); return; }
+      license.shopName = name;
+      await saveLicense();
+      slot.innerHTML = '';
+      renderTrialPill();
+    };
+  }
+
+  // ---- Paywall modal (trial exhausted) ----
+  function showPaywall(){
+    const slot = document.getElementById('ia-modal-slot');
+    slot.innerHTML = `
+      <div class="ia-overlay">
+        <div class="ia-modal">
+          <h2>Trial limit reached</h2>
+          <p><b>${escapeAttr(license.shopName || 'Your shop')}</b> has logged ${TRIAL_LIMIT} items on the free trial. Unlock StockTalk to keep adding stock.</p>
+          <div class="ia-paywall-price">
+            <div class="row"><span>Price</span><b>${PAY_INSTRUCTIONS.price}</b></div>
+            <div class="row"><span>M-Pesa (Send Money)</span><b>${PAY_INSTRUCTIONS.mpesa}</b></div>
+            <div class="row"><span>WhatsApp receipt to</span><b>${PAY_INSTRUCTIONS.phone}</b></div>
+          </div>
+          <p style="margin-top:-6px;">${SELLER_NAME} will send you an unlock code after payment. Enter it below.</p>
+          <input id="pw-code" placeholder="XXXX-XXXX" style="text-transform:uppercase;">
+          <div class="ia-modal-error" id="pw-error">That code doesn't match this business name.</div>
+          <button class="ia-btn ia-btn-primary" id="pw-unlock">Unlock StockTalk</button>
+          <button class="ia-mini" id="pw-close" style="width:100%;margin-top:8px;">Continue trial later</button>
+        </div>
+      </div>`;
+    document.getElementById('pw-unlock').onclick = async ()=>{
+      const entered = document.getElementById('pw-code').value.trim().toUpperCase();
+      const expected = licenseCode(license.shopName, LICENSE_SECRET);
+      if(entered === expected){
+        license.unlocked = true;
+        license.code = entered;
+        await saveLicense();
+        slot.innerHTML = '';
+        renderTrialPill();
+        toast(`Unlocked — welcome aboard, ${license.shopName} 🎉`);
+      } else {
+        document.getElementById('pw-error').classList.add('show');
+      }
+    };
+    document.getElementById('pw-close').onclick = ()=>{ slot.innerHTML = ''; };
+  }
+
+  // ---------- Storage ----------
+  async function loadItems(){
+    try{
+      const res = await window.storage.get(STORE_KEY, false);
+      if(res && res.value){
+        const parsed = JSON.parse(res.value);
+        if(Array.isArray(parsed)) items = parsed;
+      }
+    }catch(e){ /* no data yet */ }
+    await loadLicense();
+    if(!license.shopName){ showOnboarding(); }
+    render();
+  }
+  async function saveItems(){
+    try{
+      await window.storage.set(STORE_KEY, JSON.stringify(items), false);
+    }catch(e){ console.error('save failed', e); }
+  }
+
+  // ---------- Parsing ----------
+  function num(str){
+    if(!str) return null;
+    const n = parseFloat(str.replace(/,/g,''));
+    return isNaN(n) ? null : n;
+  }
+
+  function parseEntry(text){
+    const original = text.trim();
+    let working = ' ' + original + ' ';
+
+    function extract(regex){
+      const m = working.match(regex);
+      if(m){ working = working.replace(m[0], ' '); }
+      return m;
+    }
+
+    const buyM = extract(/\b(?:buy(?:ing)?(?:\s*price)?|cost(?:s)?(?:\s*price)?|bought\s*at)\s*(?:is|at|of|:)?\s*(?:ksh|kes)?\s*([\d,]+(?:\.\d+)?)/i);
+    const sellM = extract(/\b(?:sell(?:ing)?(?:\s*price)?|price\s*is)\s*(?:is|at|of|:)?\s*(?:ksh|kes)?\s*([\d,]+(?:\.\d+)?)/i);
+    const qtyM = extract(/\b(?:qty|quantity)\s*(?:is|of|:)?\s*(\d+)\b/i) || extract(/\b(\d+)\s*(?:pieces|pcs|units)\b/i);
+    const threshM = extract(/\b(?:threshold|low\s*stock\s*at|warn(?:\s*me)?\s*at|reorder\s*at)\s*(?:is|of|:)?\s*(\d+)/i);
+    const locM = extract(/\b(shelf|rack|floor|bin)\s*[:\-]?\s*([a-z0-9\-]+)/i);
+    const dateM = extract(/\b(?:restocked|received)\s*(?:on)?\s*(\d{4}-\d{2}-\d{2})/i);
+    const supM = extract(/\b(?:from|supplier)\s*[:\-]?\s*([a-z0-9 &]+?)(?:,|$)/i);
+
+    // whatever's left, minus filler words/commas, is the item name
+    let name = working
+      .replace(/\b(and|with|at|on|is|of)\b/gi, ' ')
+      .replace(/,/g, ' ')
+      .replace(/\s{2,}/g, ' ')
+      .trim();
+    if(!name) name = original.split(',')[0].trim();
+
+    const buying = buyM ? num(buyM[1]) : null;
+    let selling = sellM ? num(sellM[1]) : null;
+    const qty = qtyM ? parseInt(qtyM[1],10) : 1;
+    let threshold = threshM ? parseInt(threshM[1],10) : null;
+    const location = locM ? (locM[1][0].toUpperCase()+locM[1].slice(1).toLowerCase()+' '+locM[2].toUpperCase()) : '';
+    const restocked = dateM ? dateM[1] : new Date().toISOString().slice(0,10);
+    const supplier = supM ? supM[1].trim() : '';
+
+    const category = inferCategory(name);
+    let sellingSuggested = false;
+    if(selling === null && buying !== null){
+      selling = suggestSellingPrice(buying, category);
+      sellingSuggested = true;
+    }
+    if(threshold === null){
+      threshold = Math.max(2, Math.round(qty * 0.25));
+    }
+
+    return { name, category, location, qty, threshold, buying, selling, sellingSuggested, restocked, supplier };
+  }
+
+  function inferCategory(name){
+    const lower = name.toLowerCase();
+    for(const [cat, words] of Object.entries(CATEGORY_KEYWORDS)){
+      if(words.some(w => lower.includes(w))) return cat;
+    }
+    return 'General';
+  }
+
+  function suggestSellingPrice(buying, category){
+    const sameCat = items.filter(i => i.category === category && i.buying > 0 && i.selling > 0);
+    let margin = 1.35;
+    if(sameCat.length){
+      const avg = sameCat.reduce((sum,i)=> sum + (i.selling/i.buying), 0) / sameCat.length;
+      if(avg > 1) margin = avg;
+    }
+    const raw = buying * margin;
+    return Math.round(raw/10)*10;
+  }
+
+  // ---------- Ticket preview ----------
+  function showTicket(parsed){
+    pendingParse = parsed;
+    const slot = document.getElementById('ia-ticket-slot');
+    const nextNo = (items.reduce((m,i)=>Math.max(m,i.itemNo),0) || 0) + 1;
+    slot.innerHTML = `
+      <div class="ia-ticket" id="ia-ticket">
+        <div class="ia-ticket-head"><span>New entry · #${nextNo}</span><b>Confirm details</b></div>
+        <div class="ia-field full"><label>Item name</label><input id="t-name" value="${escapeAttr(parsed.name)}"></div>
+        <div class="ia-field">
+          <label>Category</label>
+          <select id="t-cat">${CATEGORY_LIST.map(c=>`<option ${c===parsed.category?'selected':''}>${c}</option>`).join('')}</select>
+          <label>Location</label><input id="t-loc" value="${escapeAttr(parsed.location)}" placeholder="e.g. Shelf A1">
+        </div>
+        <div class="ia-field">
+          <label>Quantity</label><input id="t-qty" type="number" min="0" value="${parsed.qty}">
+          <label>Low stock at</label><input id="t-thresh" type="number" min="0" value="${parsed.threshold}">
+        </div>
+        <div class="ia-field">
+          <label>Buying (KSh)</label><input id="t-buy" type="number" min="0" value="${parsed.buying ?? ''}">
+          <label>Selling (KSh)${parsed.sellingSuggested ? '<span class="flag">suggested</span>':''}</label><input id="t-sell" type="number" min="0" value="${parsed.selling ?? ''}">
+        </div>
+        <div class="ia-field">
+          <label>Restocked</label><input id="t-date" type="date" value="${parsed.restocked}">
+          <label>Supplier / notes</label><input id="t-sup" value="${escapeAttr(parsed.supplier)}" placeholder="optional">
+        </div>
+        <div class="ia-ticket-actions">
+          <button class="ia-btn ia-btn-ghost" id="t-cancel">Cancel</button>
+          <button class="ia-btn ia-btn-primary" id="t-confirm">✅ Add to inventory</button>
+        </div>
+      </div>`;
+    document.getElementById('t-cancel').onclick = ()=>{ slot.innerHTML=''; pendingParse=null; };
+    document.getElementById('t-confirm').onclick = confirmTicket;
+    document.getElementById('ia-ticket').scrollIntoView({behavior:'smooth', block:'nearest'});
+  }
+
+  function confirmTicket(){
+    if(trialBlocked()){
+      document.getElementById('ia-ticket-slot').innerHTML = '';
+      showPaywall();
+      return;
+    }
+    const name = document.getElementById('t-name').value.trim();
+    if(!name){ flashInvalid('t-name'); return; }
+    const buying = num(document.getElementById('t-buy').value);
+    if(buying === null){ flashInvalid('t-buy'); return; }
+    let selling = num(document.getElementById('t-sell').value);
+    if(selling === null) selling = suggestSellingPrice(buying, document.getElementById('t-cat').value);
+
+    const nextNo = (items.reduce((m,i)=>Math.max(m,i.itemNo),0) || 0) + 1;
+    const item = {
+      id: 'i'+Date.now(),
+      itemNo: nextNo,
+      name,
+      category: document.getElementById('t-cat').value,
+      location: document.getElementById('t-loc').value.trim(),
+      qty: parseInt(document.getElementById('t-qty').value,10) || 0,
+      threshold: parseInt(document.getElementById('t-thresh').value,10) || 0,
+      buying, selling,
+      restocked: document.getElementById('t-date').value,
+      supplier: document.getElementById('t-sup').value.trim()
+    };
+    items.push(item);
+    saveItems();
+    document.getElementById('ia-ticket-slot').innerHTML = '';
+    document.getElementById('ia-input').value = '';
+    pendingParse = null;
+    pushFeed(item);
+    toast(`Added "${item.name}" ✅`);
+    render();
+  }
+
+  function flashInvalid(id){
+    const el = document.getElementById(id);
+    el.style.borderColor = 'var(--warn)';
+    el.focus();
+    setTimeout(()=>{ el.style.borderColor=''; }, 1200);
+  }
+
+  function escapeAttr(s){
+    return (s||'').replace(/"/g,'&quot;');
+  }
+
+  // ---------- Feed ----------
+  let feedLog = [];
+  function pushFeed(item){
+    feedLog.unshift(item);
+    feedLog = feedLog.slice(0,4);
+    const feed = document.getElementById('ia-feed');
+    feed.innerHTML = feedLog.map(i=>`
+      <div class="ia-feed-item"><span class="dot"></span> <b>${i.name}</b> — ${i.qty} units logged at ${i.location||'no location set'}</div>
+    `).join('');
+  }
+
+  // ---------- Toast ----------
+  let toastTimer;
+  function toast(msg){
+    const t = document.getElementById('ia-toast');
+    t.textContent = msg;
+    t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(()=> t.classList.remove('show'), 2200);
+  }
+
+  // ---------- Rendering ----------
+  function computeStats(){
+    const totalItems = items.length;
+    const totalBuying = items.reduce((s,i)=> s + i.qty*i.buying, 0);
+    const totalSelling = items.reduce((s,i)=> s + i.qty*i.selling, 0);
+    const lowCount = items.filter(i=> i.qty <= i.threshold).length;
+    return {totalItems, totalBuying, totalSelling, lowCount};
+  }
+
+  function fmtKsh(n){
+    return 'KSh ' + Math.round(n).toLocaleString('en-KE');
+  }
+
+  function renderStats(){
+    const s = computeStats();
+    document.getElementById('ia-stats').innerHTML = `
+      <div class="ia-stat"><b>${s.totalItems}</b><span>Items tracked</span></div>
+      <div class="ia-stat ${s.lowCount>0?'low':''}"><b>${s.lowCount}</b><span>Low stock</span></div>
+      <div class="ia-stat"><b>${fmtKsh(s.totalBuying)}</b><span>Stock value (buy)</span></div>
+      <div class="ia-stat"><b>${fmtKsh(s.totalSelling)}</b><span>Stock value (sell)</span></div>
+    `;
+  }
+
+  function renderFilters(){
+    const cats = ['All', ...Array.from(new Set(items.map(i=>i.category)))];
+    const box = document.getElementById('ia-filters');
+    box.innerHTML = cats.map(c=>`<div class="ia-chip ${c===filterCategory && !filterLow?'active':''}" data-cat="${escapeAttr(c)}">${c}</div>`).join('')
+      + `<div class="ia-chip low ${filterLow?'active':''}" id="chip-low">⚠️ Low stock</div>`;
+    box.querySelectorAll('.ia-chip[data-cat]').forEach(chip=>{
+      chip.onclick = ()=>{ filterCategory = chip.dataset.cat; filterLow=false; renderFilters(); renderList(); };
+    });
+    document.getElementById('chip-low').onclick = ()=>{ filterLow = !filterLow; renderFilters(); renderList(); };
+  }
+
+  function renderList(){
+    let list = items.slice().sort((a,b)=> b.itemNo - a.itemNo);
+    if(filterLow) list = list.filter(i=> i.qty <= i.threshold);
+    else if(filterCategory !== 'All') list = list.filter(i=> i.category === filterCategory);
+    if(searchTerm) list = list.filter(i=> i.name.toLowerCase().includes(searchTerm));
+
+    const box = document.getElementById('ia-list');
+    if(!list.length){
+      box.innerHTML = `<div class="ia-empty">No items here yet. Tell the assistant above what came in.</div>`;
+      return;
+    }
+    box.innerHTML = list.map(i=>{
+      const low = i.qty <= i.threshold;
+      const profit = i.selling - i.buying;
+      return `
+      <div class="ia-card">
+        <div class="ia-card-top">
+          <div>
+            <div class="ia-card-name">${i.name}</div>
+            <div class="ia-card-meta">#${i.itemNo} · ${i.category} · ${i.location || 'no location set'}</div>
+          </div>
+          <span class="ia-badge ${low?'low':'ok'}">${low?'Low stock':'OK'}</span>
+        </div>
+        <div class="ia-card-grid">
+          <div><span class="k">Qty</span><span class="v">${i.qty}</span></div>
+          <div><span class="k">Buying</span><span class="v">${fmtKsh(i.buying)}</span></div>
+          <div><span class="k">Selling</span><span class="v">${fmtKsh(i.selling)}</span></div>
+          <div><span class="k">Profit/ea</span><span class="v">${fmtKsh(profit)}</span></div>
+          <div><span class="k">Stock value</span><span class="v">${fmtKsh(i.qty*i.buying)}</span></div>
+          <div><span class="k">Restocked</span><span class="v">${i.restocked}</span></div>
+        </div>
+        <div class="ia-card-actions">
+          <button class="ia-mini" data-edit="${i.id}">Edit qty</button>
+          <button class="ia-mini danger" data-del="${i.id}">Remove</button>
+        </div>
+      </div>`;
+    }).join('');
+
+    box.querySelectorAll('[data-del]').forEach(btn=>{
+      btn.onclick = ()=>{
+        const id = btn.dataset.del;
+        items = items.filter(i=> i.id !== id);
+        saveItems(); render();
+        toast('Item removed');
+      };
+    });
+    box.querySelectorAll('[data-edit]').forEach(btn=>{
+      btn.onclick = ()=>{
+        const item = items.find(i=> i.id === btn.dataset.edit);
+        const next = prompt(`New quantity for "${item.name}"`, item.qty);
+        if(next === null) return;
+        const n = parseInt(next,10);
+        if(!isNaN(n)){
+          item.qty = n;
+          saveItems(); render();
+          toast('Quantity updated');
+        }
+      };
+    });
+  }
+
+  function render(){
+    renderStats();
+    renderFilters();
+    renderList();
+    renderTrialPill();
+  }
+
+  // ---------- Input wiring ----------
+  const input = document.getElementById('ia-input');
+  document.getElementById('ia-parse').onclick = handleParseClick;
+  input.addEventListener('keydown', e=>{
+    if(e.key === 'Enter' && !e.shiftKey){ e.preventDefault(); handleParseClick(); }
+  });
+  input.addEventListener('input', ()=>{
+    input.style.height = 'auto';
+    input.style.height = Math.min(input.scrollHeight, 120) + 'px';
+  });
+
+  function handleParseClick(){
+    if(trialBlocked()){ showPaywall(); return; }
+    const text = input.value.trim();
+    if(!text) return;
+    const parsed = parseEntry(text);
+    showTicket(parsed);
+  }
+
+  document.getElementById('ia-search').addEventListener('input', e=>{
+    searchTerm = e.target.value.toLowerCase();
+    renderList();
+  });
+
+  document.getElementById('ia-reset').onclick = async ()=>{
+    if(!confirm('This clears every item from this inventory. Continue?')) return;
+    items = [];
+    await saveItems();
+    render();
+    toast('Inventory cleared');
+  };
+
+  // ---------- Voice input (feature-detected) ----------
+  const SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const micBtn = document.getElementById('ia-mic');
+  if(SR){
+    const rec = new SR();
+    rec.lang = 'en-US';
+    rec.interimResults = false;
+    let listening = false;
+    micBtn.onclick = ()=>{
+      if(listening) { rec.stop(); return; }
+      rec.start();
+    };
+    rec.onstart = ()=>{ listening = true; micBtn.classList.add('listening'); };
+    rec.onend = ()=>{ listening = false; micBtn.classList.remove('listening'); };
+    rec.onresult = (e)=>{
+      const text = e.results[0][0].transcript;
+      input.value = (input.value ? input.value + ', ' : '') + text;
+    };
+    rec.onerror = ()=>{ listening = false; micBtn.classList.remove('listening'); };
+  } else {
+    micBtn.style.display = 'none';
+  }
+
+  // ---------- Export to Excel ----------
+  document.getElementById('ia-export').onclick = ()=>{
+    if(!items.length){ toast('Nothing to export yet'); return; }
+    const headers = ['Item No.','Item Name','Category','Location in Store (Shelf/Rack)','Quantity Remaining',
+      'Low Stock Threshold','Stock Status','Buying Price (KSh)','Selling Price (KSh)','Profit per Item (KSh)',
+      'Total Stock Value (Buying)','Total Stock Value (Selling)','Last Restocked Date','Supplier / Notes'];
+    const rows = [headers];
+    items.slice().sort((a,b)=>a.itemNo-b.itemNo).forEach(i=>{
+      rows.push([i.itemNo, i.name, i.category, i.location, i.qty, i.threshold, '', i.buying, i.selling, '', '', '', i.restocked, i.supplier]);
+    });
+    const ws = XLSX.utils.aoa_to_sheet(rows);
+    for(let r=1; r<rows.length; r++){
+      const row = r+1;
+      ws['G'+row] = {t:'str', f:`IF(E${row}<=F${row},"LOW STOCK","OK")`};
+      ws['J'+row] = {t:'n', f:`I${row}-H${row}`};
+      ws['K'+row] = {t:'n', f:`E${row}*H${row}`};
+      ws['L'+row] = {t:'n', f:`E${row}*I${row}`};
+    }
+    ws['!cols'] = [{wch:7},{wch:28},{wch:16},{wch:22},{wch:10},{wch:11},{wch:12},{wch:12},{wch:12},{wch:12},{wch:14},{wch:14},{wch:13},{wch:22}];
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, 'Inventory');
+    XLSX.writeFile(wb, 'StockTalk_Inventory.xlsx');
+    toast('Excel file downloading…');
+  };
+
+  // ---------- Install as an app (PWA) ----------
+  if('serviceWorker' in navigator){
+    window.addEventListener('load', ()=>{
+      navigator.serviceWorker.register('service-worker.js').catch(()=>{ /* not hosted, or file:// — ignore */ });
+    });
+  }
+
+  const installBtn = document.getElementById('ia-install');
+  const isIOS = /iphone|ipad|ipod/i.test(navigator.userAgent);
+  const isStandalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+
+  let deferredInstallPrompt = null;
+  window.addEventListener('beforeinstallprompt', (e)=>{
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if(!isStandalone) installBtn.style.display = 'flex';
+  });
+
+  if(isIOS && !isStandalone){
+    installBtn.style.display = 'flex';
+  }
+
+  installBtn.addEventListener('click', async ()=>{
+    if(deferredInstallPrompt){
+      deferredInstallPrompt.prompt();
+      await deferredInstallPrompt.userChoice;
+      deferredInstallPrompt = null;
+      installBtn.style.display = 'none';
+      return;
+    }
+    if(isIOS){
+      showIOSInstallHelp();
+    }
+  });
+
+  function showIOSInstallHelp(){
+    const slot = document.getElementById('ia-modal-slot');
+    slot.innerHTML = `
+      <div class="ia-overlay">
+        <div class="ia-modal">
+          <h2>Add to Home Screen</h2>
+          <p>iPhone doesn't allow one-tap installs from the browser, but adding StockTalk to your Home Screen takes a few seconds:</p>
+          <p style="color:var(--text);">1. Tap the <b>Share</b> icon at the bottom of Safari (the square with an arrow).<br>
+          2. Scroll down and tap <b>"Add to Home Screen."</b><br>
+          3. Tap <b>Add</b> in the top-right corner.</p>
+          <p>StockTalk will then open full-screen from your Home Screen, just like any other app.</p>
+          <button class="ia-btn ia-btn-primary" id="ios-help-close">Got it</button>
+        </div>
+      </div>`;
+    document.getElementById('ios-help-close').onclick = ()=>{ slot.innerHTML = ''; };
+  }
+
+  window.addEventListener('appinstalled', ()=>{
+    installBtn.style.display = 'none';
+    toast('StockTalk installed ✅');
+  });
+
+  loadItems();
+})();
+</script>
+</body>
+</html>
